@@ -3,8 +3,9 @@
 namespace IKadar\Repository\QueryBuilder;
 
 use Exception;
-use IKadar\HTTPClient\Request\RequestInterface;
 use IKadar\HTTPClient\Request\RequestFactory;
+use IKadar\Repository\Query\HTTPAPIQuery;
+use IKadar\Repository\Query\QueryInterface;
 
 abstract class APIQueryBuilder implements QueryBuilderInterface
 {
@@ -17,9 +18,9 @@ abstract class APIQueryBuilder implements QueryBuilderInterface
     /**
      * @throws Exception
      */
-    public function buildQuery($queryName, ...$args): RequestInterface
+    public function buildQuery($queryName, ...$args): QueryInterface
     {
-        return $this->requestFactory->createRequest($queryName, ...$args);
+        return new HTTPAPIQuery($this->requestFactory->createRequest($queryName, ...$args));
     }
 
 }

@@ -3,13 +3,13 @@
 namespace IKadar\Repository\QueryBuilder;
 
 use Exception;
-use IKadar\HTTPClient\Request;
+use IKadar\Repository\Query\QueryInterface;
 
 abstract class QueryBuilder implements QueryBuilderInterface
 {
     /**
      * @throws Exception
      */
-    abstract public function buildQuery($queryName, ...$args): Request\RequestInterface;
+    abstract public function buildQuery($queryName, ...$args): QueryInterface;
 
 }
